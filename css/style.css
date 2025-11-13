@@ -135,23 +135,27 @@ button:focus {
 
 .section_title {
   margin-bottom: 75px;
+  padding: 40px 0px;
+  background-color: #000;
+  
 }
 
 .section_title h2 {
   font-size: 36px;
   line-height: 45px;
   font-weight: 600;
+  color: white
 }
 
 .section_title p {
   font-size: 14px;
   line-height: 30px;
-  color: #777777;
+  color: white;
   margin-bottom: 0px;
 }
 
 .title_color {
-  color: #222222;
+  color: white
 }
 
 .title_w {
@@ -3604,80 +3608,145 @@ h1, h2, h3, h4, h5, h6 {
 .footer-bottom .footer-social a:hover {
   color: #034b1e;
 }
+/* ===========================
+   GALERIA ANTIGA + ANIMAÇÃO
+   =========================== */
 
-/* reset útil só para a seção (opcional) */
-.gallery_section, .gallery_area, .gallery_item, .gallery_img { box-sizing: border-box; }
-
-/* --- título e subtítulo centralizados --- */
-.gallery_section {
-  text-align: center;
-  max-width: 1100px;
-  margin: 0 auto 60px;
-  padding: 0 20px;
+/* Remove margens padrão */
+html, body {
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+    overflow-x: hidden;
 }
 
-.gallery_section h2 { font-size: 2.5rem; margin: 0 0 8px; }
-.gallery_section p { color: #666; margin: 0 0 32px; }
-
-/* --- grid responsivo --- */
-.gallery_area {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-  align-items: start;    /* evita desalinhamento vertical */
-  justify-items: center; /* centra itens dentro das colunas */
-  width: 100%;
-  margin: 0 auto;
-  padding: 0 12px;
+/* SEÇÃO PRINCIPAL – fundo preto e tela cheia */
+.gallery_area.section_gap {
+    width: 100vw;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    background-color: #000;
+    padding-top: 0;
+    padding-bottom: 50px;
 }
 
-/* cada item ocupa toda a coluna e alinha conteúdo */
+/* container solto sem limite de largura */
+.gallery_area .container {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background-color: #000;
+}
+
+/* TÍTULO */
+.section_title {
+    background-color: #000;
+    padding: 50px 20px 35px;
+    margin: 0;
+    text-align: center;
+}
+
+.section_title h2 {
+    font-size: 36px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.section_title p {
+    font-size: 14px;
+    color: #eee;
+    margin: 0;
+}
+
+/* Tira espaços da row e colunas */
+.gallery_area .row {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.gallery_area .col-md-4 {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* ITEM */
 .gallery_item {
-  width: 100%;
-  margin: 0;
-  display: flex;
-  justify-content: center;
+    width: 100%;
+    opacity: 0;                /* inicia invisível */
+    transform: translateY(20px);  
+    animation: fadeUp 0.9s ease forwards;
 }
 
-/* caixa fixa e consistente para todas as imagens */
+/* Delay suave para cada imagem */
+.gallery_item:nth-child(1) { animation-delay: 0.1s; }
+.gallery_item:nth-child(2) { animation-delay: 0.2s; }
+.gallery_item:nth-child(3) { animation-delay: 0.3s; }
+.gallery_item:nth-child(4) { animation-delay: 0.4s; }
+.gallery_item:nth-child(5) { animation-delay: 0.5s; }
+.gallery_item:nth-child(6) { animation-delay: 0.6s; }
+.gallery_item:nth-child(7) { animation-delay: 0.7s; }
+.gallery_item:nth-child(8) { animation-delay: 0.8s; }
+.gallery_item:nth-child(9) { animation-delay: 0.9s; }
+
+/* Animação */
+@keyframes fadeUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Estilo da imagem */
 .gallery_img {
-  width: 100%;
-  max-width: 720px;     /* controla largura máxima */
-  border-radius: 12px;
-  overflow: hidden;
-  position: relative;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.12);
-  background: #000;
-  transition: transform .28s ease;
-  aspect-ratio: 16 / 10; /* mantém caixas iguais sem cortar conteúdo do layout */
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    position: relative;
+    background-color: #000;
 }
 
-/* efeito sutil */
-.gallery_img:hover { transform: translateY(-6px); }
-
-/* imagem preenche a caixa sem deformar */
 .gallery_img img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover; /* preenche e mantém proporção — sem distorção */
-  object-position: center;
-  transition: transform .45s ease;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
 }
 
-/* zoom suave ao hover */
-.gallery_img:hover img { transform: scale(1.05); }
-
-/* legenda (se usar) */
-.gallery_img figcaption {
-  position: absolute;
-  left: 16px; right: 16px; bottom: 14px;
-  color: #fff; z-index: 5;
-  opacity: 0; transform: translateY(8px);
-  transition: all .28s ease;
-  pointer-events: none;
+/* Hover com zoom */
+.gallery_img:hover img {
+    transform: scale(1.05);
 }
-.gallery_img:hover figcaption { opacity: 1; transform: translateY(0); }
+
+/* Overlay do botão */
+.gallery_img .hover {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    opacity: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s ease;
+}
+
+.gallery_img:hover .hover {
+    opacity: 1;
+}
+
+.gallery_img .hover i {
+    color: #fff;
+    font-size: 22px;
+}
+
+
+
+
+
 
 /* responsivo */
 @media (max-width: 991.98px) {
