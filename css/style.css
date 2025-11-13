@@ -340,9 +340,11 @@ button:focus {
   padding: 0px 25px;
 }
 
-.navbar .logo_h {
-  padding-top: 0px;
+.navbar .logo_h img {
+    width: 80px;   /* ajuste aqui */
+    height: auto;
 }
+
 
 .navbar .menu_nav .nav-item .nav-link {
   font: 500 12px/80px "Poppins", sans-serif;
