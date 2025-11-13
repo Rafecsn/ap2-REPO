@@ -503,8 +503,11 @@ button:focus {
 }
 
 .banner_area .bg-parallax {
-  background: url('Otimizadas\pizza-marguerita-pizzaria-do-kaue.png') no-repeat scroll center 0/cover;
+  background: url("../Otimizadas/pizza-marguerita-pizzaria-do-kaue.png") no-repeat scroll center 0/cover;
   opacity: 0.50;
+}
+.oi{
+  background: url("../Otimizadas/pizza-marguerita-pizzaria-do-kaue.png") no-repeat scroll center 0/cover;
 }
 
 .banner_area .position {
